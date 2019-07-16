@@ -1,13 +1,11 @@
 const request = require('superagent');
 
-const getRandomQuote = (count, favoriteCharacter) => {
+const getRandomQuote = (count, favoriteChar) => {
     return request  
-        .get(`futuramaapi.herokuapp.com/api/quotes/${count}`)
-        .then(res => {
-            if(favoriteCharacter === res.character) {
-                res.body;
-            }
-        });
+        .get(`http://futuramaapi.herokuapp.com/api/quotes/${favoriteChar}/${count}`)
+        .then(res => res.body);
 }
 
-module.exports = getRandomQuote;
+module.exports = {
+    getRandomQuote
+};
